@@ -12,7 +12,7 @@ class MpdecimalConan(ConanFile):
     name = "mpdecimal"
     version = "2.4.2"
     description = "mpdecimal is a package for correctly-rounded arbitrary precision decimal floating point arithmetic."
-    license = "BSD"
+    license = "BSD-2-Clause"
     topics = ["conan", "mpdecimal", "multiprecision", "library"]
     url = "https://github.com/bincrafters/conan-mpdecimal"
     homepage = "http://www.bytereef.org/mpdecimal"
