@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 from conans import ConanFile, AutoToolsBuildEnvironment, tools
@@ -13,10 +14,11 @@ class MpdecimalConan(ConanFile):
     version = "2.4.2"
     description = "mpdecimal is a package for correctly-rounded arbitrary precision decimal floating point arithmetic."
     license = "BSD-2-Clause"
-    topics = ["conan", "mpdecimal", "multiprecision", "library"]
+    topics = ("conan", "mpdecimal", "multiprecision", "library")
     url = "https://github.com/bincrafters/conan-mpdecimal"
     homepage = "http://www.bytereef.org/mpdecimal"
     author = "Bincrafters <bincrafters@gmail.com>"
+
     settings = "os", "compiler", "build_type", "arch"
     options = {
         "shared": [True, False],
@@ -26,7 +28,7 @@ class MpdecimalConan(ConanFile):
         "shared": False,
         "fPIC": True,
     }
-    no_copy_source = False
+
     _source_subfolder = "sources"
 
     def configure(self):
