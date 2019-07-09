@@ -129,7 +129,7 @@ class MpdecimalConan(ConanFile):
                                   "\tln -sf $(LIBSHARED) $(LIBSONAME)",
                                   "")
             tools.replace_in_file(mpdec_makefile_in,
-                                  "CONFIGURE_LDFLAGS = ",
+                                  "CONFIGURE_LDFLAGS =",
                                   "CONFIGURE_LDFLAGS = -Wl,--out-implib,libmpdec{}".format(static_ext))
         else:
             tools.replace_in_file(mpdec_makefile_in,
