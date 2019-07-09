@@ -142,8 +142,6 @@ class MpdecimalConan(ConanFile):
                                   "libmpdec{}".format(shared_ext))
 
     def _fix_msvc_sources(self):
-        self._fix_msvc_sources()
-
         libmpdec_folder = os.path.join(self._source_subfolder, "libmpdec")
         main_version, _ = self.version.split(".", 1)
 
