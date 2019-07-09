@@ -20,4 +20,4 @@ class MpdecimalTestConan(ConanFile):
     def test(self):
         if not tools.cross_building(self.settings):
             os.chdir("bin")
-            self.run(".%sexample 13 100" % os.sep)
+            self.run(".%stest_package 13 100" % os.sep)
