@@ -58,11 +58,6 @@ class MpdecimalConan(ConanFile):
         "Windows": ".dll",
         "Macos": ".dylib",
     }
-    _static_gcc_ext_mapping = {
-        "Linux": ".a",
-        "Windows": ".a",
-        "Macos": ".lib",
-    }
 
     def _fix_autotools_sources(self):
         """
@@ -73,7 +68,7 @@ class MpdecimalConan(ConanFile):
         """
 
         shared_ext = self._shared_gcc_ext_mapping[str(self.settings.os)]
-        static_ext = self._static_gcc_ext_mapping[str(self.settings.os)]
+        static_ext = ".a"
         main_version, _ = self.version.split(".", 1)
 
         tools.replace_in_file(os.path.join(self._source_subfolder, "configure"),
@@ -135,7 +130,7 @@ class MpdecimalConan(ConanFile):
                                   "")
             tools.replace_in_file(mpdec_makefile_in,
                                   "CONFIGURE_LDFLAGS = ",
-                                  "CONFIGURE_LDFLAGS = -Wl,--out-implib,libmpdec.a ")
+                                  "CONFIGURE_LDFLAGS = -Wl,--out-implib,libmpdec{}".format(static_ext))
         else:
             tools.replace_in_file(mpdec_makefile_in,
                                   "libmpdec.so",
@@ -200,7 +195,7 @@ class MpdecimalConan(ConanFile):
             with tools.chdir(os.path.join(self.build_folder, self._source_subfolder)):
                 autotools = AutoToolsBuildEnvironment(self, win_bash=tools.os_info.is_windows)
                 autotools.install()
-                shutil.rmtree(os.path.join(self.package_folder, "share"))
+            shutil.rmtree(os.path.join(self.package_folder, "share"))
 
         self.copy("LICENSE.txt",
                   src=os.path.join(self.source_folder, self._source_subfolder),
