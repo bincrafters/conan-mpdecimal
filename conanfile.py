@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from conans import ConanFile, AutoToolsBuildEnvironment, tools
 from conans.errors import ConanInvalidConfiguration
 import os
@@ -30,6 +28,7 @@ class MpdecimalConan(ConanFile):
         if self.settings.arch not in ("x86", "x86_64"):
             raise ConanInvalidConfiguration("Arch is unsupported")
         del self.settings.compiler.libcxx
+        del self.settings.compiler.cppstd
 
     def config_options(self):
         if self.options.shared or self.settings.compiler == "Visual Studio":
