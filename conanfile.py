@@ -12,7 +12,6 @@ class MpdecimalConan(ConanFile):
     topics = ("conan", "mpdecimal", "multiprecision", "library")
     url = "https://github.com/bincrafters/conan-mpdecimal"
     homepage = "http://www.bytereef.org/mpdecimal"
-    author = "Bincrafters <bincrafters@gmail.com>"
     settings = "os", "compiler", "build_type", "arch"
     options = {
         "shared": [True, False],
@@ -36,7 +35,7 @@ class MpdecimalConan(ConanFile):
 
     def build_requirements(self):
         if self.settings.os == "Windows" and self.settings.compiler != "Visual Studio":
-            self.build_requires("msys2_installer/latest@bincrafters/stable")
+            self.build_requires("msys2/20161025")
 
     def source(self):
         filename = "{}-{}.tar.gz".format(self.name, self.version)
