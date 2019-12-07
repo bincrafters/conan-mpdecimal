@@ -35,7 +35,7 @@ class MpdecimalConan(ConanFile):
 
     def build_requirements(self):
         if self.settings.os == "Windows" and self.settings.compiler != "Visual Studio":
-            self.build_requires("msys2/20161025")
+            self.build_requires("msys2/20190524")
 
     def source(self):
         filename = "{}-{}.tar.gz".format(self.name, self.version)
